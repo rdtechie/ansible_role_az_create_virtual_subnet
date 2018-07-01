@@ -11,9 +11,9 @@
     client_id: "{{ azure_client_id }}"
     secret: "{{ azure_client_secret }}"
     tags:
-      Owner: "{{ item.Owner }}"
-      Company: "{{ item.Company }}"
-      Project: "{{ item.Project }}"
+      Owner: "{{ item[0].Owner }}"
+      Company: "{{ item[0].Company }}"
+      Project: "{{ item[0].Project }}"
   with_nested:
     - "{{ azure_tags }}"
     - "{{ az_virtual_subnet_address_prefix_cidr }}"
