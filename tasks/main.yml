@@ -1,0 +1,21 @@
+---
+- name: Ensure Virtual Subnet Exists
+  azure_rm_subnet:
+    name: "{{ az_virtual_subnet_name }}"
+    resource_group: "{{ az_resource_group_name }}"
+    virtual_network_name: "{{ az_virtual_network_name }}"
+    address_prefix_cidr: "{{ item[1] }}"
+    state: "present"
+    tenant: "{{ azure_tenant_id }}"
+    subscription_id: "{{ azure_subscription_id }}"
+    client_id: "{{ azure_client_id }}"
+    secret: "{{ azure_client_secret }}"
+    tags:
+      Owner: "{{ item.Owner }}"
+      Company: "{{ item.Company }}"
+      Project: "{{ item.Project }}"
+  with_nested:
+    - "{{ azure_tags }}"
+    - "{{ az_virtual_subnet_address_prefix_cidr }}"
+  register: CreatedVirtualSubnet
+...

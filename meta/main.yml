@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Richard Diphoorn
+  description: This role expands on the official Azure Virtual Subnet module. It provides a ready made solution to use.
+               It includes a method to add multiple tags to a virtual network.
+  company: rdtechie
+  license: MIT
+  min_ansible_version: 2.5
+  platforms:
+    - name: EL
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - Azure
+    - Microsoft
+dependencies:
+  - { role: Azure.azure_preview_modules }
+...

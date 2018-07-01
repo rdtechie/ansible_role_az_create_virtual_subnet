@@ -1,2 +1,1 @@
 # ansible_role_az_create_virtual_subnet
-# ansible_role_az_create_virtual_subnet
