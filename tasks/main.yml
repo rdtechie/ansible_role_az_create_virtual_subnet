@@ -4,18 +4,12 @@
     name: "{{ az_virtual_subnet_name }}"
     resource_group: "{{ az_resource_group_name }}"
     virtual_network_name: "{{ az_virtual_network_name }}"
-    address_prefix_cidr: "{{ item[1] }}"
+    address_prefix_cidr: "{{ az_virtual_subnet_address_prefix_cidr }}"
+    security_group_name: "{{ az_network_security_group_name }}"
     state: "present"
     tenant: "{{ azure_tenant_id }}"
     subscription_id: "{{ azure_subscription_id }}"
     client_id: "{{ azure_client_id }}"
     secret: "{{ azure_client_secret }}"
-    tags:
-      Owner: "{{ item[0].Owner }}"
-      Company: "{{ item[0].Company }}"
-      Project: "{{ item[0].Project }}"
-  with_nested:
-    - "{{ azure_tags }}"
-    - "{{ az_virtual_subnet_address_prefix_cidr }}"
   register: CreatedVirtualSubnet
 ...
