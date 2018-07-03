@@ -1,11 +1,16 @@
 ---
+- name: Set Subnet NSG Parameters
+  set_fact: 
+    az_nsg_dict: "{{ (az_nsg_dict|default({}))|combine({item.key: item.value}) }}"
+  loop: "{{ az_nsg|dict2items }}"
+
 - name: Ensure Virtual Subnet Exists
   azure_rm_subnet:
     name: "{{ az_virtual_subnet_name }}"
     resource_group: "{{ az_resource_group_name }}"
     virtual_network_name: "{{ az_virtual_network_name }}"
     address_prefix_cidr: "{{ az_virtual_subnet_address_prefix_cidr }}"
-    #security_group_name: "{{ az_nsg_dict }}"
+    security_group_name: "{{ az_nsg_dict }}"
     state: "present"
     tenant: "{{ azure_tenant_id }}"
     subscription_id: "{{ azure_subscription_id }}"
