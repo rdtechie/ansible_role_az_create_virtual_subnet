@@ -5,7 +5,7 @@
     resource_group: "{{ az_resource_group_name }}"
     virtual_network_name: "{{ az_virtual_network_name }}"
     address_prefix_cidr: "{{ az_virtual_subnet_address_prefix_cidr }}"
-    security_group_name: "{{ az_network_security_group_name }}"
+    security_group_name: "{{ az_nsg_dict }}"
     state: "present"
     tenant: "{{ azure_tenant_id }}"
     subscription_id: "{{ azure_subscription_id }}"
