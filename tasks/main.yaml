@@ -16,5 +16,4 @@
     subscription_id: "{{ azure_subscription_id }}"
     client_id: "{{ azure_client_id }}"
     secret: "{{ azure_client_secret }}"
-  register: CreatedVirtualSubnet
 ...
